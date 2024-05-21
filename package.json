@@ -1,0 +1,26 @@
+{
+  "name": "rollup-plugin-html-inline",
+  "version": "1.0.1",
+  "description": "",
+  "main": "./cjs/index.js",
+  "module": "./src/index.js",  
+  "exports": {
+    ".": {
+      "require": "./cjs/index.js",
+      "import": "./src/index.js"
+    },
+    "./src/index.js": {
+      "require": "./cjs/index.js",
+      "import": "./src/index.js"
+    }    
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c"
+  },
+  "keywords": [
+    "rollup", "plugin", "html", "inline"
+  ],
+  "author": "",
+  "license": "ISC"
+}
