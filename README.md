@@ -2,7 +2,7 @@
 
 ### About:
 
-A roll-up plugin that generates an html file based on the specified template and inserts links to the generated scripts into it. This plugin is similar to rollup-plugin-generate-html-template, but unlike it has the option to add a hash to the names of generated resources (as rollup does through the entryFileNames and assetFileNames options) and to the resulting html file.
+A rollup plugin that generates an html file based on the specified template and inserts links to the generated scripts into it. This plugin is similar to `rollup-plugin-generate-html-template`, but unlike it has the option to add a hash to the names of generated resources (as rollup can do through the `entryFileNames` and `assetFileNames` options) and to the resulting html file.
 
 ### Motivation: 
 
