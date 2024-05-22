@@ -1,5 +1,7 @@
 ## rollup-plugin-html-inline
 
+[![npm](https://img.shields.io/npm/v/rollup-plugin-html-inline)](https://www.npmjs.com/package/rollup-plugin-html-inline)
+
 ### About:
 
 A roll-up plugin that generates an html file based on the specified template and inserts links to the generated scripts into it. This plugin is similar to rollup-plugin-generate-html-template, but unlike it has the option to add a hash to the names of generated resources (as rollup does through the entryFileNames and assetFileNames options) and to the resulting html file.
@@ -26,7 +28,7 @@ npm i rollup-plugin-html-inline -D
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preact App</title>
+    <title>App</title>
     <link rel="stylesheet" href="/styles.[hash].css" type="text/css">
 </head>
 <body>
@@ -80,7 +82,4 @@ Four previous steps will remove content of `dist` directory and generate in it t
 
 - `dest` option specifies html name. By default it uses `"index.html"` or input file if it has `.html` extension
 - `hashBy` - hash type, which one will be applied to file names (by default it is 'time'). `file` value means hash based on content length (there is a little possibility to match with previous length, so `time` is more preferable).  Hash based on file content doesn't support yet (on start I've rejected the option in order not to pull an excess dependency)
-
-
-
-
+- `cleanExclude` - string array consisting of paths to files, which ones won't deleting between recompilations (by default every recompilation with `hash: false` or switching `hash` option will clean all files in the distination directory)
