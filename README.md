@@ -4,11 +4,15 @@
 
 ### About:
 
-A roll-up plugin that generates an html file based on the specified template and inserts links to the generated scripts into it. This plugin is similar to rollup-plugin-generate-html-template, but unlike it has the option to add a hash to the names of generated resources (as rollup does through the entryFileNames and assetFileNames options) and to the resulting html file.
+Generates an html file based on the specified template and inserts links to the generated scripts into it. 
+
+This plugin is similar to [rollup-plugin-generate-html-template](https://www.npmjs.com/package/rollup-plugin-generate-html-template), but unlike it **rollup-plugin-html-inline** has the option to add a hash to the names of generated resources (as rollup can do through the `entryFileNames` and `assetFileNames` options) and to the resulting html file.
 
 ### Motivation: 
 
-As we know, rollup options allow you to add a hash to the names of compiled files using the entry File Names and assetFileName options. It works great. But this method creates a problem, because in the final html file you have to manually change the paths to resources each time due to the changed hash. Unfortunately, the lack of such a feature out of the box, any generally accepted practice, and any documented api for extracting and managing a hash to make embedding it manually with minimal effort made these wonderful options practically useless to me. That's why I thought about creating a plugin that can do this.
+As we know, **rollup** has opportunity to add a hash to the names of compiled files using the `entryFileNames` and `assetFileName` options. It works great. But the method leads to unnecessary manual work, because in the final html file you have to manually change the paths to resources each time due to the changed hash. 
+
+Unfortunately, the lack of such a feature out of the box, any generally accepted practice, and any documented API for extracting and managing a hash to make embedding it manually with minimal effort made these wonderful options useless to me. That's why I have thought about creating a plugin that can do html generation with links embedding solving the problem.
 
 ### Usage: 
 
