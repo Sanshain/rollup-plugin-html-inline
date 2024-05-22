@@ -16,11 +16,12 @@ const hashB64 = Buffer.from((Math.random().toString().slice(2))).toString('base6
  *  dest?: string,
  *  hashBy?: 'time'|'file'
  *  hash: boolean,
- *  cleanExclude?: string[]
+ *  cleanExclude?: string[],
+ *  clean?: boolean
  * }} options 
  * @returns 
  */
-export function htmlInliner({ template, dest, hash, hashBy, cleanExclude }) {
+export function htmlInliner({ template, dest, hash, hashBy, cleanExclude, clean }) {
     return {
         name: 'html-inline',
         /**
@@ -60,7 +61,7 @@ export function htmlInliner({ template, dest, hash, hashBy, cleanExclude }) {
                         .length == targetFilenames.length;
 
                     if (!asExpected) {
-                        removeFiles(targetDir, cleanExclude);
+                        clean && removeFiles(targetDir, cleanExclude);
                     }
                     else {                        
                         return; // nothing to do

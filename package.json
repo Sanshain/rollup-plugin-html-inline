@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-html-inline",
-  "version": "1.0.6",
+  "version": "1.0.10",
   "description": "Rollup plugin, which one generates an html file based on the specified template",
   "main": "./cjs/index.js",
   "module": "./src/index.js",

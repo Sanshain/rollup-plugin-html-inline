@@ -36,7 +36,7 @@ function htmlInliner({ template, dest, hash, hashBy, cleanExclude }) {
         generateBundle(options, bundle) {
                     
             if (!dest) {
-                if (path.extname(options.file) == '.html') {
+                if (options.file && path.extname(options.file) == '.html') {
                     dest = path.basename(options.file);
                 }
                 else {
