@@ -3,17 +3,7 @@
   "version": "1.0.6",
   "description": "Rollup plugin, which one generates an html file based on the specified template",
   "main": "./cjs/index.js",
-  "module": "./src/index.js",    
-  "exports": {
-    ".": {
-      "require": "./cjs/index.js",
-      "import": "./src/index.js"
-    },
-    "./src/index.js": {
-      "require": "./cjs/index.js",
-      "import": "./src/index.js"
-    }    
-  },
+  "module": "./src/index.js",
   "homepage": "https://github.com/Sanshain/rollup-plugin-html-inline",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
