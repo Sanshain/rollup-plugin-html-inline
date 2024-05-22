@@ -63,9 +63,9 @@ export default {
     plugins: [
         // ...
         css({ output: `styles.css`}),
-        development && inline({
+        inline({
             template: './public/index.html',
-            hash: true,
+            hash: !development,
         }),        
     ]
 ```
