@@ -87,3 +87,4 @@ Four previous steps will remove content of `dist` directory and generate in it t
 - `dest` option specifies html name. By default it uses `"index.html"` or input file if it has `.html` extension
 - `hashBy` - hash type, which one will be applied to file names (by default it is 'time'). `file` value means hash based on content length (there is a little possibility to match with previous length, so `time` is more preferable).  Hash based on file content doesn't support yet (on start I've rejected the option in order not to pull an excess dependency)
 - `cleanExclude` - string array consisting of paths to files, which ones won't deleting between recompilations (by default every recompilation with `hash: false` or switching `hash` option will clean all files in the distination directory)
+- `resourcesDirectory` - additional subdirectory regarding final html direcory, where will be placed resources (js, css etc)
