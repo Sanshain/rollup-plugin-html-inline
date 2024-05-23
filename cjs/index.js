@@ -21,11 +21,13 @@ const hashB64 = Buffer.from((Math.random().toString().slice(2))).toString('base6
  *  dest?: string,
  *  hashBy?: 'time'|'file'
  *  hash: boolean,
- *  cleanExclude?: string[]
+ *  cleanExclude?: string[],
+ *  clean?: boolean,
+ *  resourcesDirectory?: string
  * }} options 
  * @returns 
  */
-function htmlInliner({ template, dest, hash, hashBy, cleanExclude }) {
+function htmlInliner({ template, dest, hash, hashBy, cleanExclude, resourcesDirectory, clean = true}) {
     return {
         name: 'html-inline',
         /**
@@ -65,7 +67,7 @@ function htmlInliner({ template, dest, hash, hashBy, cleanExclude }) {
                         .length == targetFilenames.length;
 
                     if (!asExpected) {
-                        removeFiles(targetDir, cleanExclude);
+                        clean && removeFiles(targetDir, cleanExclude);
                     }
                     else {                        
                         return; // nothing to do
@@ -85,11 +87,15 @@ function htmlInliner({ template, dest, hash, hashBy, cleanExclude }) {
                         ? (bundle[fileName].code || bundle[fileName].source).length.toString()
                         : hashB64;
 
-                    const fixedName = pattern.replace('[hash]', hashSalt);
+                    let fixedName = pattern.replace('[hash]', hashSalt);
 
                     templateContent = templateContent.replace(pattern, () => {
                         return fixedName
                     });
+
+                    if (resourcesDirectory) {
+                        fixedName = resourcesDirectory + fixedName;
+                    }
 
                     bundle[fixedName] = bundle[fileName];
                     bundle[fixedName].fileName = fixedName;

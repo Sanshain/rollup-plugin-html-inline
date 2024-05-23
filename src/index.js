@@ -17,11 +17,12 @@ const hashB64 = Buffer.from((Math.random().toString().slice(2))).toString('base6
  *  hashBy?: 'time'|'file'
  *  hash: boolean,
  *  cleanExclude?: string[],
- *  clean?: boolean
+ *  clean?: boolean,
+ *  resourcesDirectory?: string
  * }} options 
  * @returns 
  */
-export function htmlInliner({ template, dest, hash, hashBy, cleanExclude, clean }) {
+export function htmlInliner({ template, dest, hash, hashBy, cleanExclude, resourcesDirectory, clean = true}) {
     return {
         name: 'html-inline',
         /**
@@ -81,11 +82,15 @@ export function htmlInliner({ template, dest, hash, hashBy, cleanExclude, clean 
                         ? (bundle[fileName].code || bundle[fileName].source).length.toString()
                         : hashB64;
 
-                    const fixedName = pattern.replace('[hash]', hashSalt);
+                    let fixedName = pattern.replace('[hash]', hashSalt);
 
                     templateContent = templateContent.replace(pattern, () => {
                         return fixedName
                     });
+
+                    if (resourcesDirectory) {
+                        fixedName = resourcesDirectory + fixedName;
+                    }
 
                     bundle[fixedName] = bundle[fileName];
                     bundle[fixedName].fileName = fixedName;
