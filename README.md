@@ -88,3 +88,9 @@ Four previous steps will remove content of `dist` directory and generate in it t
 - `hashBy` - hash type, which one will be applied to file names (by default it is 'time'). `file` value means hash based on content length (there is a little possibility to match with previous length, so `time` is more preferable).  Hash based on file content doesn't support yet (on start I've rejected the option in order not to pull an excess dependency)
 - `cleanExclude` - string array consisting of paths to files, which ones won't deleting between recompilations (by default every recompilation with `hash: false` or switching `hash` option will clean all files in the distination directory)
 - `resourcesDirectory` - additional subdirectory regarding final html direcory, where will be placed resources (js, css etc)
+
+
+
+### Notes
+
+(!) At the moment plugin supports just names matched with `[\w\d-_./]*[name].[hash][ext]*` pattern. On another patterns it is not tested yet (but it is possible to change the pattern due `entryFileNames` and `assetFileNames` options).
